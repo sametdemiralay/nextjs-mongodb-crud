@@ -4,10 +4,6 @@ const Home = () => {
   return (
     <>
       <TopicsList />
-      <TopicsList />
-      <TopicsList />
-      <TopicsList />
-      <TopicsList />
     </>
   )
 }
