@@ -1,34 +1,112 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Step by Step This Project
 
-## Getting Started
-
-First, run the development server:
+## **- Create new project and install the dependencies:**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+# ESLint, Tailwind CSS and App Router will be 'YES'
+npx create-next-app@latest
+
+npm i mongoose react-icons
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## **- Frontend Part:**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+I pass the `Frontend Part` fast because it is the `Backend Part` I want to focus on...
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## **- Backend Part:**
 
-## Learn More
+### Database:
 
-To learn more about Next.js, take a look at the following resources:
+- Creating a new project in MongoDB Atlas
+- Build Database in this project
+- Give a name to this Database (MongoDB assigns the password itself)
+- Create `.env` file to main project folder and add the password here
+- Give the IP address 0.0.0.0 to access the database from anywhere.
+- Go to: 'Cluster -> Connect -> MongoDB for VS Code' and copy your connection string.
+- Add this connection string to your .env file and replace `<password>` area with your password
+- Also add your connection string of the end of '/crud_db'
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Create CRUD Requests:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Create `libs/mongodb.js` file : Here we create the function of connecting to mongobd thru the mongoose and connection string
+- Create `models/topic.js` file : Here we create the database schema
+- Create `api/topics/route.js` file : Create 'POST()' function.
+- Use 'Postman' to check POST() function is working properly;
 
-## Deploy on Vercel
+```bash
+# *** POSTING DATA WITH POSTMAN ***
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Request Type
+POST
+# Request URL
+http://localhost:3000/api/topics
+# Object Example (Body / raw / JSON)
+{
+    "title": "HTML",
+    "description": "A markup language for websites."
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- After the above process, you should be able to see the object you POSTed in the MongoDB database.
+- **_api/topics/route.js_** => Create 'GET()' function.
+- Use 'Postman' to check GET() function is working properly;
+
+```bash
+# *** GETTING ALL DATA IN POSTMAN ***
+
+# Request Type
+GET
+# Request URL
+http://localhost:3000/api/topics
+
+```
+
+- **_api/topics/route.js_** => Create 'DELETE()' function.
+- Use 'Postman' to check DELETE() function is working properly;
+
+```bash
+# *** DELETING DATA WITH POSTMAN ***
+
+# Request Type
+DELETE
+# Request URL
+http://localhost:3000/api/topics
+# Object Example ( Params )
+key : id
+value : ___id from mongodb___
+```
+
+- After the above process, you can check that the object has been DELETEd from the MongoDB database.
+
+- Create `api/topics/[id]/route.js` file : Create 'PUT()' function.
+
+```bash
+# *** PUTTING DATA WITH POSTMAN ***
+
+# Request Type
+PUT
+# Request URL
+http://localhost:3000/api/topics/___id from mongodb___
+# Object Example (Body / raw / JSON)
+{
+    "newTitle": "CSS Updated",
+    "description": "Cascading Style Sheet Updated"
+}
+```
+
+- After the above process, you can check that the object has been UPDATED from the MongoDB database.
+- **_api/topics/[id]/route.js_** => Create 'GET()' function.
+
+```bash
+# *** GETTING A SPECIFIC DATA IN DATABASE ***
+
+# Request Type
+GET
+# Request URL
+http://localhost:3000/api/topics/___id from mongodb___
+
+```
+
+### Connecting the Backedn to Frontend:
+
+38:44
