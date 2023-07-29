@@ -107,6 +107,16 @@ http://localhost:3000/api/topics/___id from mongodb___
 
 ```
 
-### Connecting the Backedn to Frontend:
+### Connecting the Backend to Frontend:
 
-38:44
+- **_components/TopicsList.jsx_** => Create 'getTopic()' function
+
+- **_addTopic/page.jsx_** => Create forms onSubmit function
+
+- **_components/RemoveBtn.jsx_** => Create onClick function
+
+- **_editTopic/[id]/page.jsx_** => Get Clicked items id and pass the EditTopicForm.jsx
+
+- **_components/EditTopicForm.jsx_** => Create forms onSubmit function
+
+THE END :)
